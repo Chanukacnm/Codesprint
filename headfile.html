@@ -1,0 +1,48 @@
+<!--HTML document to define the layout of the header and the navigation bar-->
+<div id="container">
+<div id="header">
+<h1>Car Rent</h1>
+<h2>RENT-A-CAR</h2>
+<h3>PREMIER CAR RENTAL SERVICES IN SRI LANKA </h3>
+<h3 style='float: right'><?php 
+date_default_timezone_set('Asia/Kolkata');
+echo "Colombo, ".date('d F Y H:i:s');
+?> </h3>
+</div>
+<div id="navigation">
+<ul>
+    <?php
+    if(!isset($_SESSION['userid'])){
+        echo "<li><a href='index.php'>Home </a></li>";
+        echo "<li><a href='aboutus.php'>About Us</a></li>";
+        echo "<li><a href='signup.php'>Sign Up</a></li>";
+        echo "<li><a href='login.php'>Login</a></li>";
+        echo " <li style='float: right'><a href='login.php'>Staff Login</a></li>";
+        echo" <li style='float: right'><a href='basket.php'>My Basket</a></li>"; 
+		echo "<li style='float: right'><a href='basket.php'>WishList</a></li>";	
+        }else{
+			if($_SESSION['usertype']=='c')
+			{
+			echo "<li><a href='index.php'>Home </a></li>";
+            echo "<li><a href='aboutus.php'>About Us</a></li>";
+            echo "<li style='float: right'><a href='logout.php'>Log Out</a></li>";
+            echo "<li style='float: right'><a href='basket.php'>My Basket</a></li>";	
+			echo "<li style='float: right'><a href='basket.php'>WishList</a></li>";			
+			}
+			if($_SESSION['usertype']=='a')
+			{
+			echo "<li><a href='index.php'>Home </a></li>";
+            echo "<li><a href='aboutus.php'>About Us</a></li>";
+			echo "<li><a href='addproduct.php'>Add Product</a></li>";
+            echo "<li><a href='editAdd.php'>Edit Product</a></li>";
+            echo "<li><a href='processorders.php'>Process Product</a></li>";
+            echo "<li style='float: right'><a href='logout.php'>Log Out</a></li>";	
+			echo "<li style='float: right'><a href='basket.php'>WishList</a></li>";				
+			}
+			
+            
+        }
+    ?>
+	</ul>
+</div>
+<div id="content">
